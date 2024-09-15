@@ -1,0 +1,25 @@
+<form id="levelupForm">
+    <input type="hidden" id="username" name="username" value="bb">
+    <input type="number" id="levelSuccess" name="levelSuccess" value="1">
+    <input type="number" id="levelScore" name="levelScore" placeholder="Level Score" value="40">
+    <button type="submit">Level Up</button>
+  </form>
+  
+  <div id="result"></div>
+  
+  <script src="script.js"></script>
+
+  <script>
+    // JavaScript will go here
+    function submitLevelupForm(){
+        const form = document.getElementById("levelupForm");
+
+        // Set or modify form values using JavaScript
+        document.getElementById("username").value = "newUsername";
+        document.getElementById("levelSuccess").value = 2;
+        document.getElementById("levelScore").value = 50;
+
+        // Submit the form programmatically
+        form.submit();
+    }
+  </script>

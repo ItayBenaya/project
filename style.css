@@ -1,0 +1,444 @@
+/* CSS Reset */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+
+/* CSS Variables */
+:root{
+    --navbar-height: 59px;
+}
+
+/* Navigation Bar */
+#navbar{
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0px;
+}
+
+#navbar::before{
+    content: "";
+    background-color: black;
+    position: absolute;
+    top:0px;
+    left:0px;
+    height: 100%;
+    width:100%;
+    z-index: -1;
+    opacity: 0.7;
+}
+#navbar ul {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#navbar ul li {
+    margin-right: 20px;
+}
+
+#navbar ul li.item.user {
+    margin-left: auto; /* Pushes the "User" item to the far right */
+    margin-right: 0; /* Ensures there's no extra margin on the right */
+    
+}
+
+#navbar ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+#navbar ul li a:hover {
+    color: #555;
+}
+
+/* Navigation Bar: Logo and Image */
+#logo{
+    margin: 10px 34px;
+}
+
+#logo img{
+    height: 59px;
+    margin: 3px 6px;
+}
+
+
+/* Navigation Bar: List Styling */
+
+#navbar ul{
+    display: flex;
+    font-family: 'Baloo Bhai', cursive;
+}
+
+
+#navbar ul li{ 
+    list-style: none;
+    font-size: 1.3rem;
+}
+
+#navbar ul li a{
+    color: white;
+    display: block;
+    padding: 3px 22px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+#navbar ul li a:hover{
+    background: #a8c0ff;
+    background: -webkit-linear-gradient(to right, #3f2b96, #a8c0ff);
+    background: linear-gradient(to right, #3f2b96, #a8c0ff);
+}
+/* Navigation Button Style */
+.nav-btn {
+    background: none; /* Remove default button background */
+    color: white; /* Match link text color */
+    border: none; /* Remove button border */
+    display: block; /* Make button behave like a block element */
+    padding: 3px 22px; /* Match padding of <a> tags */
+    border-radius: 20px; /* Match border-radius of <a> tags */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.3rem; /* Match font-size */
+    cursor: pointer; /* Show pointer cursor */
+    font-family: 'Baloo Bhai', cursive; /* Match font-family */
+}
+
+/* Button Hover State */
+.nav-btn:hover {
+    background: #a8c0ff;
+    background: -webkit-linear-gradient(to right, #3f2b96, #a8c0ff);
+    background: linear-gradient(to right, #3f2b96, #a8c0ff);
+    color: white; /* Ensure text color remains white on hover */
+}
+
+
+
+
+/* Home Section */
+#home{
+    display: flex;
+    flex-direction: column;
+    padding:3px 200px;
+    height: 550px;
+    justify-content: center;
+    align-items: center;
+}
+
+#home::before{ 
+    background: #a8c0ff;
+    background: -webkit-linear-gradient(to right, #3f2b96, #a8c0ff);
+    background: linear-gradient(to right, #3f2b96, #a8c0ff);
+    overflow-y: hidden;
+    content: "";
+    position: absolute;
+    height: 642px;
+    top:0px;
+    left:0px;
+    width: 100%;
+    z-index: -1;
+    opacity:0.89;
+}
+
+#home h1{
+    color:white;
+    text-align: center;
+    font-family: 'Bree Serif', serif;
+}
+
+#home p{
+    color:white;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: 'Bree Serif', serif;
+}
+/* Services Section */
+#services{
+    margin: 34px;
+    display: flex;
+}
+#services .box{ 
+    border: 2px solid brown;
+    padding: 34px;
+    margin: 2px 55px;
+    border-radius: 28px;
+    background: #f2f2f2;
+    margin-bottom: 20px;
+}
+
+#services .box img{ 
+   height: 160px;
+   margin: auto;
+   display: block;
+}
+
+#services .box p{
+    font-family: 'Bree Serif', serif;
+
+} 
+
+/* Clients Section */
+#client-section{ 
+    position: relative;
+    z-index: -1
+}
+
+#client-section::before{
+ content: "";
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ z-index: -1;
+ opacity: 0.3;
+}
+
+#clients{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.client-item{
+    padding: 34px;
+    z-index: -1
+}
+
+#clients img{
+    height: 124px;
+    
+}
+
+
+/* Contact Section */
+#contact{
+    position: relative;
+    z-index: -1;
+        background: #a8c0ff;
+    background: -webkit-linear-gradient(to right, #3f2b96, #a8c0ff);
+    background: linear-gradient(to right, #3f2b96, #a8c0ff);
+}
+#contact::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.7;
+    background: url('../contact.jpg') no-repeat center center/cover;
+
+}
+#contact-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 34px;
+    
+}
+#contact-box input, 
+#contact-box textarea{
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 9px;
+    font-size: 1.1rem;
+} 
+
+#contact-box form{
+    width: 40%;
+}
+
+#contact-box label{
+   font-size: 1.3rem;
+   font-family: 'Bree Serif', serif;
+
+}
+
+
+footer{
+    background: purple;
+    color: white;
+    padding: 9px 20px;
+}
+
+/* Utility Classes */
+.h-primary{
+    font-family: 'Bree Se'rif, serif;   
+    font-size: 3.8rem;
+    padding: 12px;
+    z-index: -1;
+}
+
+.h-secondary{
+    font-family: 'Bree Serif', serif;
+    font-size: 2.3rem;
+    padding: 12px;
+    z-index: -1;
+}
+
+   /* .btn{
+        padding: 6px 20px;
+        border: 2px solid white;
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        margin: 17px;
+        font-size: 1.3rem;
+        border-radius: 10px;
+        cursor:pointer;
+        text-align: center;
+    }
+
+    .btn:hover{
+        color: black;
+        background-color: white;
+    } 
+
+    .btn {
+        padding: 6px 20px;
+        border: 2px solid;
+        margin: 17px;
+        font-size: 1.3rem;
+        border-radius: 10px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .btn:hover {
+        opacity: 0.8; 
+
+    .btn-green {
+        background-color: #4CAF50; 
+        color: white;
+        border: 2px solid #45a049; 
+
+    .btn-green:hover {
+        background-color: #45a049; x
+        color: white;
+    } */
+    .btn {
+        padding: 6px 20px;
+        border: 2px solid #ccc;
+        background-color: #f0f0f0;
+        color: #888;
+        margin: 17px;
+        font-size: 1.3rem;
+        border-radius: 10px;
+        cursor: not-allowed;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .btn.enabled {
+        border: 2px solid #333;
+        background-color: #fff;
+        color: #333;
+        cursor: pointer;
+    }
+
+    .btn.btn-green {
+        background-color: #4CAF50;
+        color: white;
+        border: 2px solid #45a049;
+        cursor: pointer;
+    }
+
+    .btn.btn-green:hover {
+        background-color: #45a049;
+    }
+
+.center{
+    text-align: center;
+}
+#quizs{
+    background: #a8c0ff;
+
+}
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333; /* You can change the color as needed */
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center; /* Center the heading */
+}
+/* Scoped Styles for the Login Section */
+.login-section .container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-section h2 {
+    font-family: 'Bree Serif', serif;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-section .form-group {
+    margin-bottom: 15px;
+}
+
+.login-section .form-group label {
+    font-family: 'Baloo Bhai', cursive;
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.login-section .form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.login-section button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2rem;
+    color: white;
+    background: linear-gradient(to right, #3f2b96, #a8c0ff);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-family: 'Baloo Bhai', cursive;
+}
+
+.login-section button:hover {
+    background: linear-gradient(to right, #a8c0ff, #3f2b96);
+}
+
+/* Additional styles for the login result */
+.login-section #login-result {
+    margin-top: 15px;
+    font-family: 'Bree Serif', serif;
+    color: #333;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+

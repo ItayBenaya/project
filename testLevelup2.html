@@ -1,0 +1,31 @@
+<form id="levelupForm" style="display: none;">
+  <input type="hidden" id="username" name="username" value="">
+  <input type="number" id="levelSuccess" name="levelSuccess" value="1">
+  <input type="number" id="levelScore" name="levelScore"  value="0">
+  <button type="submit">Level Up</button>
+</form>
+
+<script src="script.js"></script>
+
+<script>
+  // JavaScript will go here
+  function submitLevelupForm(score){
+      const form = document.getElementById("levelupForm");
+
+      level = document.getElementById("levelSuccess").value
+
+      username = localStorage.getItem('authUser');
+      alert('username:'+username)
+      // Set or modify form values using JavaScript
+      document.getElementById("username").value = username;
+      // document.getElementById("levelSuccess").value = 2;
+      document.getElementById("levelScore").value = score;
+      alert('score'+score)
+
+      postLevelup(username,level,score)
+
+  }
+
+  submitLevelupForm(100)
+
+</script>

@@ -1,0 +1,91 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* CSS Variables */
+:root {
+    --primary-color: #3f2b96;
+    --secondary-color: #a8c0ff;
+    --text-color: white;
+    --background-color: #f2f2f2;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Baloo Bhai', cursive;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container */
+.container {
+    background-color: var(--background-color);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+/* Heading */
+.container h2 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-family: 'Bree Serif', serif;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: var(--primary-color);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid var(--primary-color);
+    font-size: 1.1rem;
+}
+
+/* Button Styling */
+button[type="submit"] {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    margin-top: 10px;
+    font-family: 'Baloo Bhai', cursive;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--secondary-color);
+    background: -webkit-linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+/* Login Result */
+#login-result {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FitQuiz</title>
+    <script src="https://unpkg.com/jwt-decode/build/jwt-decode.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Bree+Serif&display=swap" rel="stylesheet">
+    <style>
+        /* Add styles to align the user item to the right */
+        #navbar ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style-type: none;
+        }
+
+        #navbar ul li.item.user {
+            margin-left: auto;
+            margin-right: 0;
+        }
+    </style>
+</head>
+<body onload="onloadMain()">
+    <nav id="navbar">
+        <div id="logo">
+            <a href="#home"><img src="https://i.ibb.co/7K1DSZW/logo1.png" alt="logo1"></a>
+        </div>
+        <ul>
+            <li class="item"><a id="userDisplay">User: GUEST</a></li>
+            <li class="item"><a id="levelDisplay">Level: 1</a></li>
+            <li class="item"><a id="scoreDisplay">Score: 0</a></li>
+            <li class="item user"><a href="login.html">Login</a></li>
+            <li class="item"><a href="signup.html">Signup</a></li>
+            <li class="item"><button id="signOutBtn" class="nav-btn">Sign Out</button></li>
+        </ul>
+    </nav>
+    <script src="script.js"></script>
+
+    <script>
+        const GUEST_USER = "GUEST";
+
+
+        function onloadMain(){
+            // Retrieve the token and username from localStorage
+            const token = localStorage.getItem('authToken');
+            console.log('token:', token);
+
+            user = GUEST_USER;
+            userLevel=1;
+            userScore=0;
+
+            if (token!="") {
+
+                try {
+                    const parts = token.split('.');
+                    if (parts.length !== 3) {
+                        throw new Error('Invalid token format');
+                    }
+
+                    const userObject = JSON.parse(atob(parts[1]));
+
+                    // Extract username, score, and level
+                    const { username, score, level } = userObject;
+
+                    // Use the extracted values
+                    console.log('Username:', username);
+                    console.log('Score:', score);
+                    console.log('Level:', level);   
+
+                    
+                    localStorage.setItem('authUser', username);
+                    localStorage.setItem('isSignin', true);
+                    localStorage.setItem('Score', score);
+                    localStorage.setItem('Level', level);
+
+                    user = username;
+                    userLevel=level;
+                    userScore=score;
+
+                } catch (error) {
+                    console.log('Error: ' + error.message);
+                }
+
+            } else {
+                console.log('No token found');
+            }
+            
+            // Update the user display
+            const userDisplay = document.getElementById('userDisplay');
+            userDisplay.textContent = "User: " + user;
+
+            const levelDisplay = document.getElementById('levelDisplay');
+            levelDisplay.textContent = "Level: " + userLevel;
+
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            scoreDisplay.textContent = "Score: " + userScore;
+
+            //TODO: Guest - disable signout + other user - disable signin and signout
+
+    for (let i = 1; i <= 6; i++) { // Assuming there are 6 quizzes
+        const quiz = document.getElementById('quiz' + i);
+        
+        if (userLevel >= i) {
+            enableQuizButton(quiz);
+            if(userLevel>i)
+               paintbutton(quiz);
+
+        } else {
+            disableQuizButton(quiz);
+        }
+
+        // Add the green class to the quiz corresponding to userLevel + 1
+        if (i === userLevel - 1) {
+            quiz.classList.add('btn-green');
+        }
+    }
+}
+
+function paintbutton(quizButton){
+    quizButton.classList.add('btn-green');
+}
+
+// Function to enable the button
+function enableQuizButton(quizButton) {
+    quizButton.classList.add('enabled');
+    quizButton.removeAttribute('disabled');
+    quizButton.style.cursor = 'pointer';
+    
+    ;
+    quizButton.onclick = function() {
+        window.location.href = `quiz${quizButton.textContent}.html`;
+    };
+}
+
+function disableQuizButton(quizButton) {
+    quizButton.classList.remove('enabled');
+    quizButton.setAttribute('disabled', '');
+    quizButton.style.cursor = 'not-allowed';
+    quizButton.classList.remove('btn-green');
+    quizButton.onclick = null;
+}
+
+        function loadContent(page, selector) {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', page, true);
+            xhr.onload = function() {
+                if (this.status == 200) {
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = this.responseText;
+                    const contentToLoad = tempDiv.querySelector(selector);
+                    if (contentToLoad) {
+                        document.getElementById('mainSection').innerHTML = contentToLoad.outerHTML;
+                    }
+                }
+            }
+            xhr.send();
+        }
+
+        function loadSection(sectionId) {
+            document.getElementById('mainSection').innerHTML = document.getElementById(sectionId).outerHTML;
+        }
+    </script>
+
+    <div id="mainSection">
+        <section id="home">
+            <h1 class="h-primary">Welcome To FitQuiz</h1>
+            <p>Here you can learn about fitness and health in a fun way.</p>
+            <br>
+            <br>
+        </section>
+    </div>
+
+    <h2>Choose a quiz:</h2>
+    
+    <section id="quizs">
+        
+        <br>
+        <section id="quizs">
+            <br>
+            <button id="quiz1" class="btn">1</button>
+            <button id="quiz2" class="btn">2</button>
+            <button id="quiz3" class="btn">3</button>
+            <button id="quiz4" class="btn">4</button>
+            <button id="quiz5" class="btn">5</button>
+            <button id="quiz6" class="btn">6</button>
+            <br>
+            <br>
+        </section>
+        <br>
+        <br>
+    </section>
+
+    <footer>
+        <div class="center">
+            Copyright &copy;ItayBenaya. All rights reserved!
+        </div>
+    </footer>
+</body>
+</html>
